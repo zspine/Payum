@@ -10,7 +10,9 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\FormInterface;
+use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
 class PaymentConfigType extends AbstractType
@@ -31,11 +33,16 @@ class PaymentConfigType extends AbstractType
         );
 
         $builder
-            ->add('factory', 'choice', array(
+            ->add('paymentName', null, array(
+                'constraints' => array(new NotBlank),
+            ))
+            ->add('factoryName', 'choice', array(
                 'choices' => array(
                     'paypal_express_checkout_nvp' => 'Paypal ExpressCheckout',
                     'stripe_js' => 'Stripe.Js',
-                )
+                ),
+                'empty_data' => false,
+                'constraints' => array(new NotBlank),
             ))
         ;
 
@@ -50,16 +57,23 @@ class PaymentConfigType extends AbstractType
     {
         /** @var array $data */
         $data = $event->getData();
-        if (false == empty($data['factory'])) {
+
+        $propertyPath = is_array($data) ? '[factoryName]' : 'factoryName';
+        $factoryName = PropertyAccess::createPropertyAccessor()->getValue($data, $propertyPath);
+        if (empty($factoryName)) {
             return;
         }
 
         $form = $event->getForm();
-        $paymentFactory = $this->factories[$data['factory']];
+
+        $form->add('config', 'form');
+        $configForm = $form->get('config');
+
+        $paymentFactory = $this->factories[$factoryName];
         $config = $paymentFactory->createConfig();
         foreach ($config['options.default'] as $name => $value) {
             $isRequired = in_array($name, $config['options.required']);
-            $form->add($name, is_bool($value) ? 'checkbox' : 'text', array(
+            $configForm->add($name, is_bool($value) ? 'checkbox' : 'text', array(
                 'constraints' => array_filter(array(
                     $isRequired ? new NotBlank : null
                 )),
