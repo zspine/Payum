@@ -30,14 +30,6 @@ class DynamicPaymentRegistry implements PaymentRegistryInterface
     }
 
     /**
-     * @return string
-     */
-    public function getDefaultPaymentName()
-    {
-        return;
-    }
-
-    /**
      * @param string|null $name
      *
      * @throws \Payum\Core\Exception\InvalidArgumentException if payment with such name not exist
