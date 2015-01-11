@@ -19,12 +19,29 @@ class SimpleRegistryTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function couldBeConstructedWithExpectedSetOfArguments()
+    public function couldBeConstructedWithoutAnyArguments()
     {
-        new SimpleRegistry(
-            $payments = array(),
-            $storages = array()
+        $registry = new SimpleRegistry();
+
+        $this->assertAttributeEquals(array(), 'payments', $registry);
+        $this->assertAttributeEquals(array(), 'storages', $registry);
+        $this->assertAttributeEquals(array(), 'paymentFactories', $registry);
+    }
+
+    /**
+     * @test
+     */
+    public function couldBeConstructedWithAllPossibleArguments()
+    {
+        $registry = new SimpleRegistry(
+            $payments = array('foo' => 'fooPayment'),
+            $storages = array('fooClass' => 'fooStorage'),
+            $paymentFactories = array('bar' => 'barFactory')
         );
+
+        $this->assertAttributeEquals($payments, 'payments', $registry);
+        $this->assertAttributeEquals($storages, 'storages', $registry);
+        $this->assertAttributeEquals($paymentFactories, 'paymentFactories', $registry);
     }
 
     /**
@@ -36,8 +53,7 @@ class SimpleRegistryTest extends \PHPUnit_Framework_TestCase
         $paymentBarMock = $this->getMock('Payum\Core\Payment');
 
         $registry = new SimpleRegistry(
-            $payments = array('foo' => $paymentFooMock, 'bar' => $paymentBarMock),
-            array()
+            array('foo' => $paymentFooMock, 'bar' => $paymentBarMock)
         );
 
         $this->assertSame($paymentFooMock, $registry->getPayment('foo'));
@@ -53,8 +69,7 @@ class SimpleRegistryTest extends \PHPUnit_Framework_TestCase
         $paymentBarMock = $this->getMock('Payum\Core\Payment');
 
         $registry = new SimpleRegistry(
-            $payments = array('foo' => $paymentFooMock, 'bar' => $paymentBarMock),
-            array()
+            array('foo' => $paymentFooMock, 'bar' => $paymentBarMock)
         );
 
         $payments = $registry->getPayments();
@@ -144,10 +159,7 @@ class SimpleRegistryTest extends \PHPUnit_Framework_TestCase
             ->method('addExtension')
         ;
 
-        $registry = new SimpleRegistry(
-            array('foo' => $paymentMock),
-            array()
-        );
+        $registry = new SimpleRegistry(array('foo' => $paymentMock));
 
         $registry->getPayment('foo');
     }
