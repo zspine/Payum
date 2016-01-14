@@ -17,8 +17,8 @@ class GatewayFactoriesChoiceTypeTest extends \PHPUnit_Framework_TestCase
     {
         $this->formFactory = Forms::createFormFactoryBuilder()
             ->addType(new GatewayFactoriesChoiceType(array(
-                'foo' => 'Foo Factory',
-                'bar' => 'Bar Factory'
+                'Foo Factory' => 'foo',
+                'Bar Factory' => 'bar'
             )))
             ->getFormFactory()
         ;
