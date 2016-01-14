@@ -53,12 +53,12 @@
         "propel/propel1": "~1.7",
         "psr/log": "~1.0",
         "zendframework/zend-db": "~2",
-        "symfony/routing": "~2.7|~3.0",
-        "symfony/http-kernel": "~2.7|~3.0",
-        "symfony/http-foundation": "~2.7|~3.0",
-        "symfony/form": "~2.7|~3.0",
-        "symfony/validator": "~2.7|~3.0",
-        "symfony/phpunit-bridge": "~2.7|~3.0",
+        "symfony/routing": "~2.8|~3.0",
+        "symfony/http-kernel": "~2.8|~3.0",
+        "symfony/http-foundation": "~2.8|~3.0",
+        "symfony/form": "~2.8|~3.0",
+        "symfony/validator": "~2.8|~3.0",
+        "symfony/phpunit-bridge": "~2.8|~3.0",
         "authorizenet/authorizenet": "~1.8",
         "paypal/rest-api-sdk-php" : "0.5.*",
         "klarna/checkout": "~1|~2.0",
@@ -86,10 +86,10 @@
         "zendframework/zend-db": "~2.0 If you want to store models to Zend Db ORM",
         "propel/propel1": "~1.7 If you want to store models to Propel1 ORM",
         "propel/propel": "If you want to store models to Propel2 ORM",
-        "symfony/routing": "~2.7|~3.0 If you want to use TokenFactory from symfony's bridge",
-        "symfony/http-kernel": "~2.7|~3.0 If you want to use HttpRequestVerifier from symfony's bridge",
-        "symfony/http-foundation": "~2.7|~3.0 If you want to use HttpRequestVerifier or HttpResponse reply from symfony's bridge",
-        "symfony/form": "~2.7|~3.0 If you want to use forms",
+        "symfony/routing": "~2.8|~3.0 If you want to use TokenFactory from symfony's bridge",
+        "symfony/http-kernel": "~2.8|~3.0 If you want to use HttpRequestVerifier from symfony's bridge",
+        "symfony/http-foundation": "~2.8|~3.0 If you want to use HttpRequestVerifier or HttpResponse reply from symfony's bridge",
+        "symfony/form": "~2.8|~3.0 If you want to use forms",
         "monolog/monolog": "~1.0 If you want to use PSR-3 logger",
         "authorizenet/authorizenet": "~1.8 If you want to use Authorizenet.NET install authorizenet/authorizenet:~1.8 library",
         "paypal/rest-api-sdk-php" : "0.5.* If you want to use PayPal REST API install paypal/rest-api-sdk-php:0.5.* library",
@@ -106,7 +106,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "1.0-dev"
+            "dev-master": "1.2-dev"
         }
     }
 }
