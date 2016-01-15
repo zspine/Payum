@@ -41,14 +41,16 @@
         "payum/iso4217": "~1.0",
         "guzzlehttp/guzzle": "~6.0",
         "league/url": "~3.0",
-        "twig/twig": "~1.0"
+        "twig/twig": "~1.0",
+        "doctrine/mongodb-odm": "^1.0",
+        "symfony/symfony": "2.8.*"
     },
     "require-dev": {
         "ext-curl": "*",
         "ext-pdo_sqlite": "*",
         "payum/omnipay-bridge": "~1.0@dev",
         "omnipay/dummy": "~2.0",
-        "doctrine/orm": "2.3.*",
+        "doctrine/orm": "2.5.*",
         "phpunit/phpunit": "~4.0",
         "propel/propel1": "~1.7",
         "psr/log": "~1.0",
@@ -81,7 +83,7 @@
         "payum/stripe": "self.version"
     },
     "suggest": {
-        "doctrine/orm": "~2.3 If you want to store models to database using doctrin2 ORM",
+        "doctrine/orm": "~2.5 If you want to store models to database using doctrin2 ORM",
         "doctrine/mongodb-odm": "~1.1 If you want to store models to mongo doctrin2 ODM",
         "zendframework/zend-db": "~2.0 If you want to store models to Zend Db ORM",
         "propel/propel1": "~1.7 If you want to store models to Propel1 ORM",
