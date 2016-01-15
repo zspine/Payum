@@ -35,7 +35,7 @@ before_install:
     - if [[ "$TRAVIS_PHP_VERSION" = 5.* ]]; then echo "extension = mongo.so" >> $INI_FILE; fi;
 
 install:
-    - if [[ "$TRAVIS_PHP_VERSION" = 5.* ]]; then composer require "doctrine/mongodb:1.0.*@dev" "doctrine/mongodb-odm:1.0.*@dev" --no-interaction --no-update; fi;
+    - if [[ "$TRAVIS_PHP_VERSION" = 5.* ]]; then composer require "doctrine/mongodb-odm:1.1.*" --no-interaction --no-update; fi;
     - composer require symfony/symfony:${SYMFONY_VERSION} --no-update
     - composer install --prefer-source
 
